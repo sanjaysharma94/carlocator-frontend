@@ -7,6 +7,7 @@ import {
   ListIcon,
   OrderedList,
   UnorderedList,
+  Spinner
 } from '@chakra-ui/react'
 import { Input } from '@chakra-ui/react'
 function SearchBar() {
@@ -14,86 +15,34 @@ function SearchBar() {
 
   const [text, setText] = useState();
   const [open, setOpen] = useState(false);
-
-
-  // const defaultSearchData = [
-  //   {
-  //     id: 1,
-  //     title: 'tshirts',
-  //   },
-  //   {
-  //     id: 2,
-  //     title: 'shirts',
-  //   },
-  //   {
-  //     id: 3,
-  //     title: 'activewear',
-  //   },
-  //   {
-  //     id: 4,
-  //     title: 'men',
-  //   },
-  //   {
-  //     id: 5,
-  //     title: 'women',
-  //   },
-  //   {
-  //     id: 6,
-  //     title: 'bottomwear',
-  //   },
-  //   {
-  //     id: 7,
-  //     title: 'trousers',
-  //   },
-  //   {
-  //     id: 8,
-  //     title: 'jeans',
-  //   },
-  //   {
-  //     id: 9,
-  //     title: 'shorts',
-  //   },
-  //   {
-  //     id: 10,
-  //     title: 'toys',
-  //   },
-  // ];
+const [searchData,setSearchData]=useState()
 
   const [searchText, setSearchText] = useState('');
   const [searchResult, setSearchResult] = useState();
+  const [loading,setLoading]=useState(false)
   
   //const [dataItem, setDataItem] = useState([data]);
 
   const handleChange = async (event) => {
-    //  let searchString = event.target.value.toLocaleLowerCase();
-    //  console.log("searchstring",searchString)
-
-    // if (searchString && searchString.length > 0) {
-
-    //   setSearchResult(
-    //     defaultSearchData?.filter(d =>
-    //       d?.title?.toLocaleLowerCase().includes(searchString),
-    //     ),
-    //   );
-    // } else if (searchString== null) {
-    //   console.log('checkkkkkk----------------');
-    //   setSearchResult(defaultSearchData);
-    // }
-
-  //  setOpen(false)
+   
     let searchString = event.target.value.toLocaleLowerCase();
     console.log(searchString, data);
     try {
-      // const res = await axios.get(
-      //   ""
-      // );
-      console.log(res.data);
-      setSearchResult(
-        res.data.filter((d) =>
-          d.title.shortTitle.toLocaleLowerCase().includes(searchString)
-        )
+      setLoading(true)
+      const res = await axios.get(
+        ""
       );
+      console.log(res.data);
+      // setSearchResult(
+      //   res.data.filter((d) =>
+      //     d.title.shortTitle.toLocaleLowerCase().includes(searchString)
+      //   )
+      // );
+      setSearchData(res.data)
+      setLoading(false)
     } catch (error) {
+      setLoading(false)
+
       console.log(error);
     }
     console.log("searchRes", searchResult);
@@ -118,26 +67,37 @@ console.log("checking searchResult",searchResult)
           </div>
          
         </div>
+        {loading?
+        <Spinner
+        zIndex={999}
+        ml={850}
+        mt={150}
+      
+        thickness='4px'
+        speed='0.65s'
+        emptyColor='gray.200'
+        color='blue.500'
+        size='xl'
+      />
+      :
+     
         <div className="" style={{width:"74%",backgroundColor:"white",height:"300px",borderRadius:"10px",position:"absolute",left:315,top:300,border:"1px solid grey",backgroundColor:"lightgray",textAlign:"center"}}>
+
           {searchResult && (
              <List className="" >
             
-             {
-               
+           
 
-               searchResult.map((el) => (
-                 <> <List > 
-                    
+              <p>{searchData.floor}</p>
+              <p>{searchData.slot}</p>
 
-                    <p>{el?.title}</p>  
-                   </List>
-                 </>
-               ))
-             }
+           
            </List>
           )}
         </div>
+}
       </div>
+           
     </>
   );
 }

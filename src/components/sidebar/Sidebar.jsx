@@ -40,7 +40,7 @@ import {
 //   icon: IconType;
 // }
 const LinkItems = [
-  { name: 'Find your car', icon: FiHome },
+  { name: 'Home', icon: FiHome },
   
   { name: 'Settings', icon: FiSettings },
 ];
