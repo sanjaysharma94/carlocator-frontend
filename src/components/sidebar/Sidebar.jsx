@@ -40,10 +40,8 @@ import {
 //   icon: IconType;
 // }
 const LinkItems = [
-  { name: 'Home', icon: FiHome },
-  { name: 'Trending', icon: FiTrendingUp },
-  { name: 'Explore', icon: FiCompass },
-  { name: 'Favourites', icon: FiStar },
+  { name: 'Find your car', icon: FiHome },
+  
   { name: 'Settings', icon: FiSettings },
 ];
 
@@ -86,7 +84,7 @@ const SidebarContent = ({ onClose, ...rest }) => {
   return (
     <Box
       transition="3s ease"
-      bg={useColorModeValue('white', 'gray.900')}
+      bg={useColorModeValue('light-grey', 'gray.900')}
       borderRight="1px"
       borderRightColor={useColorModeValue('gray.200', 'gray.700')}
       w={{ base: 'full', md: 60 }}
@@ -94,9 +92,9 @@ const SidebarContent = ({ onClose, ...rest }) => {
       h="full"
       {...rest}>
       <Flex h="20" alignItems="center" mx="8" justifyContent="space-between">
-        <Text fontSize="2xl" fontFamily="monospace" fontWeight="bold">
-          Logo
-        </Text>
+        {/* <Text fontSize="2xl" fontFamily="monospace" fontWeight="bold">
+          CarLocator App
+        </Text> */}
         <CloseButton display={{ base: 'flex', md: 'none' }} onClick={onClose} />
       </Flex>
       {LinkItems.map((link) => (
@@ -158,6 +156,9 @@ const MobileNav = ({ onOpen, ...rest }) => {
       borderBottomColor={useColorModeValue('gray.200', 'gray.700')}
       justifyContent={{ base: 'space-between', md: 'flex-end' }}
       {...rest}>
+         <Text  mr={1200} fontSize="2xl" fontFamily="monospace" fontWeight="bold">
+          CarLocator App
+        </Text>
       <IconButton
         display={{ base: 'flex', md: 'none' }}
         onClick={onOpen}
@@ -199,7 +200,7 @@ const MobileNav = ({ onOpen, ...rest }) => {
                   alignItems="flex-start"
                   spacing="1px"
                   ml="2">
-                  <Text fontSize="sm">Justina Clark</Text>
+                  <Text fontSize="sm"></Text>
                   <Text fontSize="xs" color="gray.600">
                     Admin
                   </Text>
@@ -210,7 +211,7 @@ const MobileNav = ({ onOpen, ...rest }) => {
               </HStack>
             </MenuButton>
             <MenuList
-              bg={useColorModeValue('white', 'gray.900')}
+              bg={useColorModeValue('black', 'gray.900')}
               borderColor={useColorModeValue('gray.200', 'gray.700')}>
               <MenuItem>Profile</MenuItem>
               <MenuItem>Settings</MenuItem>

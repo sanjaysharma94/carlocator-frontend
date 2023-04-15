@@ -6,7 +6,7 @@ import './App.css'
 
 // 1. import `ChakraProvider` component
 import { ChakraProvider } from '@chakra-ui/react'
-import Nav from './components/navbar/Navbar'
+// import Nav from './components/navbar/Navbar'
 import SimpleSidebar from './components/sidebar/Sidebar'
 import SearchBar from './components/searchbar/Searchbar.jsx'
 
